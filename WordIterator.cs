@@ -22,6 +22,10 @@ namespace csharp_text_analyser_spiacy_lin
         public string MoveNext()
         {
             string temporary = "";
+            while (fileContent[position]== " ")
+            {
+                position++;
+            }
             while (fileContent[position]!= " ")
             {
                 temporary += fileContent[position];
