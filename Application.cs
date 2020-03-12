@@ -6,7 +6,7 @@ namespace csharp_text_analyser_spiacy_lin
     {
         static void Main(string[] args)
         {
-            FileContent fcont = new FileContent("ala    #$   kota");
+            FileContent fcont = new FileContent("ala    ma   kota");
             Iterator iteratorC = fcont.CharIterator();
             while (iteratorC.HasNext())
             {

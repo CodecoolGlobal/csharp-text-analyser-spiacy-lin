@@ -22,7 +22,7 @@ namespace csharp_text_analyser_spiacy_lin
         {
             if (position<fileContent.Count)
             {
-                while (fileContent[position] == " ")
+                while (fileContent[position] == " " || fileContent[position] == "\n")
                 {
                    position++;
                 }
