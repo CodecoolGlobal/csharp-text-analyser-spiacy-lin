@@ -6,12 +6,18 @@ namespace csharp_text_analyser_spiacy_lin
     {
         static void Main(string[] args)
         {
-            FileContent fcont = new FileContent("ala ma");
-            Iterator iterator = fcont.WordIterator();
-            while (iterator.HasNext())
+            FileContent fcont = new FileContent("ala ma kota");
+            Iterator iteratorW = fcont.WordIterator();
+            while (iteratorW.HasNext())
             {
-                string item = (string) iterator.MoveNext();
-                Console.WriteLine(item + "iii");
+                string item = (string) iteratorW.MoveNext();
+                Console.WriteLine(item);
+            }
+            Iterator iteratorC = fcont.CharIterator();
+            while (iteratorC.HasNext())
+            {
+                string item = (string) iteratorC.MoveNext();
+                Console.WriteLine(item);
             }
         }
     }
