@@ -26,7 +26,7 @@ namespace csharp_text_analyser_spiacy_lin
             {
                 position++;
             }
-            while (fileContent[position]!= " ")
+            while (fileContent[position]!= " " && fileContent[position]!= "\n")
             {
                 temporary += fileContent[position];
                 position++;
