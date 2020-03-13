@@ -16,19 +16,28 @@ namespace csharp_text_analyser_spiacy_lin
         // metoda sprawdza czy jest nastepny element kolekcji
         public bool HasNext()
         {
-            position++;
-            return position < fileContent.Count;
+            position ++;
+            return position<fileContent.Count;
         }
         public string MoveNext()
         {
-            if (position <fileContent.Count)
+            string temporary = "";
+            while (fileContent[position]== " ")
             {
-                return fileContent[position];
+                position++;
             }
-            else
+            while (fileContent[position]!= " " && fileContent[position]!= "\n")
             {
-                throw new InvalidOperationException();
+                temporary += fileContent[position];
+                position++;
+                if (position == fileContent.Count) 
+                {
+                    break;
+                }
             }
+                  
+            return temporary;
+            
         }
         public void Remove()
         {

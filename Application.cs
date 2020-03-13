@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace csharp_text_analyser_spiacy_lin
 {
@@ -6,13 +7,20 @@ namespace csharp_text_analyser_spiacy_lin
     {
         static void Main(string[] args)
         {
-            FileContent fcont = new FileContent("andrzej ma kota");
-            Iterator iterator = fcont.WordIterator();
-            while (iterator.HasNext())
-            {
-                string item = (string) iterator.MoveNext();
-                Console.WriteLine(item);
-            }
+            string text = System.IO.File.ReadAllText("test.txt");
+            FileContent fcont = new FileContent(text);
+            Iterator iteratorW = fcont.WordIterator();
+            Iterator iteratorC = fcont.CharIterator();
+
+            StatisticalAnalysis staW = new StatisticalAnalysis(iteratorW);
+            Console.WriteLine(staW.Size());
+            StatisticalAnalysis staC = new StatisticalAnalysis(iteratorC);
+            Console.WriteLine(staC.Size());
+            
+            
+
+               
         }
     }
 }
+
