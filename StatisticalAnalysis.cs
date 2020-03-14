@@ -5,25 +5,9 @@ namespace csharp_text_analyser_spiacy_lin
 {
     class StatisticalAnalysis
     {
-        Iterator i;
+        List<string> strList = new List<string>();
+        //constructor
         public StatisticalAnalysis(Iterator i)
-        {
-            this.i = i;
-        }
-
-        public int CountOf(params string[] args)
-        {
-            int counter = 0;
-            foreach (string el in CreateList())
-            {
-                foreach (string item in args)
-                {
-                    if (el.Equals(item)) {counter++;}
-                }
-            }
-            return counter; 
-        }
-        public List<string> CreateList()
         {
             List<string> stringList = new List<string>();
             while (i.HasNext())
@@ -31,17 +15,55 @@ namespace csharp_text_analyser_spiacy_lin
                 string item = (string)i.MoveNext();
                 stringList.Add(item);
             }
-            return stringList;
+            strList = stringList;
+        }
+        //methods
+        public int CountOf(params string[] args)
+        {
+            int counter = 0;
+            foreach (string item in args)
+            {
+                foreach (string el in strList)
+                {
+                    if (item.Equals(el)) {counter++;}
+                }
+            }
+            return counter; 
+        }
+        
+        public int DictionarySize()
+        {
+            Dictionary<string,int> mydict = new Dictionary<string, int>();
+            int dictcounter = 0;
+            foreach (string dstring in strList)
+            {
+                if (!mydict.ContainsKey(dstring))
+                {
+                    mydict.Add(dstring,1);
+                    dictcounter++;
+                }
+            }
+            return dictcounter;
         }
         public int Size()
         {
-            int how_many = 0;
-            while (i.HasNext())
+            return strList.Count;
+        }
+        public ISet<string> OccurMoreThan(int _n_)
+        {
+            // from List to HashSet
+            HashSet<string> mySet = new HashSet<string>(strList);//tylko różne wyrazy
+            HashSet<string> outputSet = new HashSet<string>();
+            foreach (string item in mySet)
             {
-                string item = (string)i.MoveNext();
-                how_many++;
+                int how_many = 0;
+                foreach (string el in strList)
+                {
+                    if (item.Equals(el)) {how_many++;}
+                }
+                if (how_many > _n_) { outputSet.Add(item);}
             }
-            return how_many;
+            return outputSet;
         }
     }
 }
