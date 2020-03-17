@@ -4,7 +4,6 @@ namespace csharp_text_analyser_spiacy_lin
 {
     class WordIterator : Iterator
     {
-        
         private int position;
         FileContent fileContent;
         // constructor
@@ -22,7 +21,7 @@ namespace csharp_text_analyser_spiacy_lin
         public string MoveNext()
         {
             string temporary = "";
-            while (fileContent[position]== " ")
+            while (fileContent[position]== " " || fileContent[position]== "\n")
             {
                 position++;
             }
