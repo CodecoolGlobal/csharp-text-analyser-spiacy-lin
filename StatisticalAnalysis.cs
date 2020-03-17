@@ -13,7 +13,7 @@ namespace csharp_text_analyser_spiacy_lin
             while (i.HasNext())
             {
                 string item = (string)i.MoveNext();
-                stringList.Add(item);
+                stringList.Add(item.ToLower());
             }
             strList = stringList;
         }
@@ -39,12 +39,29 @@ namespace csharp_text_analyser_spiacy_lin
             {
                 if (!mydict.ContainsKey(dstring))
                 {
-                    mydict.Add(dstring,1);
+                    //mydict.Add(dstring,1);
                     dictcounter++;
                 }
             }
             return dictcounter;
         }
+
+        public Dictionary<string,string> DictionaryRatio()
+        {
+            Dictionary<string,string> mydictratio = new Dictionary<string, string>();
+            //initial stage if ratio dictionary
+            foreach (string s1 in strList)
+            {
+                if(!mydictratio.ContainsKey(s1))
+                {
+                    float ratio = (float)CountOf("e")/CountOf(s1);
+                    string ra = ratio.ToString("0.00");
+                    mydictratio.Add(s1,ra);
+                }
+            }
+            return mydictratio;
+        }
+        
         public int Size()
         {
             return strList.Count;
