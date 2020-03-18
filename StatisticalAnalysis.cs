@@ -39,7 +39,7 @@ namespace csharp_text_analyser_spiacy_lin
             {
                 if (!mydict.ContainsKey(dstring))
                 {
-                    //mydict.Add(dstring,1);
+                    mydict.Add(dstring,1);
                     dictcounter++;
                 }
             }

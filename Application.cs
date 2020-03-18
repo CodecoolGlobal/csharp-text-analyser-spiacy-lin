@@ -30,8 +30,8 @@ namespace csharp_text_analyser_spiacy_lin
                 Console.WriteLine(wordnumb);
                 
                 Console.Write("Dict size: ");
-                Console.WriteLine(staW.DictionarySize());   
-                
+                Console.WriteLine(staW.DictionarySize()); 
+               
                 Console.WriteLine("Most used words (>1%):");
                 int onepercentW = (int)(wordnumb/100 +1);
                 Console.WriteLine("[" + String.Join(", ", staW.OccurMoreThan(onepercentW).ToList()) + "]");
@@ -58,7 +58,7 @@ namespace csharp_text_analyser_spiacy_lin
                 {
                     Console.Write("[ {0} -> {1} ]", kvp.Key.ToUpper(),kvp.Value);
                 }
-                Console.WriteLine();      
+                Console.WriteLine();     
             }
             sw.Stop();
             Console.WriteLine("Benchmark time: {0} msecs",sw.Elapsed.Milliseconds);
