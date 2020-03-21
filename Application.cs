@@ -7,6 +7,7 @@ namespace csharp_text_analyser_spiacy_lin
 {
     class Application
     {
+        //Testujemy
         static void Main(string[] args)
         {
             Stopwatch sw = new Stopwatch();
